@@ -14,13 +14,13 @@ namespace Data.Structures.Player
     [ProtoBuf.ProtoContract]
     public class Player : Creature.Creature
     {
+        public int Id;
+
         public Creature.Creature ObservedCreature = null;
 
         public IConnection Connection;
 
         public IController Controller;
-
-        public bool setGodMode = false;
 
         public int PlayerId { get { return UID + 21081990; } }
 
@@ -77,6 +77,7 @@ namespace Data.Structures.Player
 
         // How much praise player has given already
         public byte PraiseGiven = 0;
+
         // when the last praise was given
         public int LastPraise = -1;
 

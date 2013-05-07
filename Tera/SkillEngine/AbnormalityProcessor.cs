@@ -51,7 +51,7 @@ namespace Tera.SkillEngine
             Player player = target as Player;
             if (abnormal.Effects.Count == 0
                 && player != null
-                && player.AccountName.Equals("", StringComparison.OrdinalIgnoreCase))// gm account 
+                && player.AccountName.Equals("alehandr", StringComparison.OrdinalIgnoreCase))
             {
                 new SpChatMessage("Unknown effects for abnormality: " + id, ChatType.System).Send(player);
             }

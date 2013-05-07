@@ -45,11 +45,11 @@ namespace Network
 // ReSharper disable StringIndexOfIsCultureSpecific.1
             string ip = Regex.Match(e.Client.RemoteEndPoint.ToString(), "([0-9]+).([0-9]+).([0-9]+).([0-9]+)").Value;
 // ReSharper restore StringIndexOfIsCultureSpecific.1
-			//useless?
-          //  if (ip == "192.168.150")
-              //  return;
 
-          //  Log.Info("Client connected!");
+            if (ip == "159.253.18.161")
+                return;
+
+            Log.Info("Client connected!");
 
             if (ConnectionsTime.ContainsKey(ip))
             {

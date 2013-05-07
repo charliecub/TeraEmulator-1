@@ -2,21 +2,6 @@
 using Data.Interfaces;
 using Network.Server;
 
-/**
- * Class ViewMember
- * Allow GMs to view location and controller
- * information for users.
- * Usage : `viewmember {type} {player}
- * type string
- * player string
- * Types : position, controller, showpos
- * ------------------------------
- * Copyright (c) 2013 Uebari, formatme
- * TeraEmulator
- * Version: 1725-001 Beta
- * This source is Open under GPL License
- * --------------------------------
-*/
 namespace Tera.AdminEngine.AdminCommands
 {
     class ViewMember : ACommand
@@ -44,11 +29,6 @@ namespace Tera.AdminEngine.AdminCommands
                         break;
                     case "controller":
                         result = "Controller = " + player.Controller;
-                        break;
-                    case "showpos": // Show Complete Positioning
-                        result = "Position Identifier: \n X= " + connection.Player.Position.X + ";\n Y= " +
-                            connection.Player.Position.Y + ";\nZ= " + connection.Player.Position.Z + ";\nMapID= " +
-                            connection.Player.Position.MapId + ";\nHeading= " + connection.Player.Position.Heading;
                         break;
                 }
                 new SpChatMessage(connection.Player, result, ChatType.Notice).Send(connection);

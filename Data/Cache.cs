@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using Data.Structures.Account;
 using Data.Structures.Guild;
 using Data.Structures.Player;
 using ProtoBuf;
 using Utils;
+using Data.DAO;
 
 namespace Data
 {
@@ -18,6 +20,7 @@ namespace Data
         public static List<string> UsedGuildNames = new List<string>();
 
         public static long LastSaveUts = Funcs.GetCurrentMilliseconds();
+        public static long LastBackupUts = Funcs.GetCurrentMilliseconds();
 
         public static void LoadData()
         {
@@ -44,8 +47,24 @@ namespace Data
             stopwatch.Stop();
 
             foreach (KeyValuePair<string, Account> account in Accounts)
+            {
+                //DAOManager.accountDAO.SaveAccount(account.Value);
                 foreach (Player player in account.Value.Players)
+                {
+                    //DAOManager.playerDAO.SaveNewPlayer(player);
                     UsedNames.Add(player.PlayerData.Name.ToLower());
+
+                    /*foreach(var quest in player.Quests.ToList())
+                    {
+                        DAOManager.questDAO.AddQuest(player, quest.Value);
+                    }*/
+
+                    //foreach (var item in player.Inventory.Items)
+                    //{
+                        //DAOManager.invenDAO.AddItem(player, Enums.Item.StorageType.Inventory, item);
+                    //}
+                }
+            }
 
             Log.Info("Cache: Loaded {0} accounts in {1}s"
                      , Accounts.Count
@@ -85,18 +104,22 @@ namespace Data
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
 
-            if (!Directory.Exists("cache_backup"))
-                Directory.CreateDirectory("cache_backup");
 
-            string dirName = "backup_" + Funcs.GetRoundedUtc();
+            if (Funcs.GetCurrentMilliseconds() - Cache.LastBackupUts > 3600000) // Backup Every 1 Hours
+            {
+                if (!Directory.Exists("cache_backup"))
+                    Directory.CreateDirectory("cache_backup");
 
-            Directory.CreateDirectory("cache_backup/" + dirName);
-            // ReSharper disable EmptyGeneralCatchClause
-            try { File.Copy("cache.bin", "cache_backup/" + dirName + "/cache.bin"); }
-            catch{}
-            try { File.Copy("guilds_cache.bin", "cache_backup/" + dirName + "/guilds_cache.bin"); }
-            catch { }
-            // ReSharper restore EmptyGeneralCatchClause
+                string dirName = "backup_" + Funcs.GetRoundedUtc();
+
+                Directory.CreateDirectory("cache_backup/" + dirName);
+                // ReSharper disable EmptyGeneralCatchClause
+                try { File.Copy("cache.bin", "cache_backup/" + dirName + "/cache.bin"); }
+                catch { }
+                try { File.Copy("guilds_cache.bin", "cache_backup/" + dirName + "/guilds_cache.bin"); }
+                catch { }
+                // ReSharper restore EmptyGeneralCatchClause
+            }
 
 
             using (FileStream fs = File.Create("cache.bin"))
@@ -131,6 +154,16 @@ namespace Data
                         Guilds[pl.GuildIdAndRank.Key].GuildMembers.Add(pl, pl.GuildIdAndRank.Value);
                         pl.Guild = Guilds[pl.GuildIdAndRank.Key];
                     }
+        }
+
+        public static int LoadTotalAccounts()
+        {
+            return Accounts.Count;
+        }
+
+        public static int LoadTotalOnlines()
+        {
+            return Accounts.Where(x => x.Value.IsOnline == true).ToList().Count;
         }
     }
 }

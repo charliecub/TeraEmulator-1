@@ -102,21 +102,13 @@ namespace Communication
             ServerIsWork = false;
         }
 
-        public static void ShutdownServerForce()
-        {
-            if (ShutdownIsStart)
-                return;
-            ShutdownIsStart = true;
-            ServerIsWork = false;
-        }
-
         protected static void MainLoop()
         {
             while (ServerIsWork)
             {
                 try
                 {
-                    if(Funcs.GetCurrentMilliseconds() - Cache.LastSaveUts > 1800000)
+                    if(Funcs.GetCurrentMilliseconds() - Cache.LastSaveUts > 60000) // Save data every 60 secs
                     {
                         Cache.LastSaveUts = Funcs.GetCurrentMilliseconds();
                         Cache.SaveData();
@@ -126,7 +118,7 @@ namespace Communication
                     FeedbackService.Action();
                     AccountService.Action();
                     PlayerService.Action();
-                    MapService.Action();//safe to uncommect? 
+                    MapService.Action();
                     ChatService.Action();
                     VisibleService.Action();
                     ControllerService.Action();

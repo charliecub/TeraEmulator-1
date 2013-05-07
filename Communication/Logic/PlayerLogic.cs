@@ -10,6 +10,7 @@ using Data.Structures.Npc;
 using Data.Structures.Player;
 using Data.Structures.SkillEngine;
 using Data.Structures.World;
+using Data.DAO;
 
 namespace Communication.Logic
 {

@@ -2,3 +2,7 @@ J:\_Tera\Tera\Crypt\bin\Debug\Crypt.dll
 J:\_Tera\Tera\Crypt\bin\Debug\Crypt.pdb
 J:\_Tera\Tera\Crypt\obj\Debug\Crypt.dll
 J:\_Tera\Tera\Crypt\obj\Debug\Crypt.pdb
+E:\tera\Github\TeraEmulator\TeraEmulator\Crypt\bin\Debug\Crypt.dll
+E:\tera\Github\TeraEmulator\TeraEmulator\Crypt\bin\Debug\Crypt.pdb
+E:\tera\Github\TeraEmulator\TeraEmulator\Crypt\obj\Debug\Crypt.dll
+E:\tera\Github\TeraEmulator\TeraEmulator\Crypt\obj\Debug\Crypt.pdb

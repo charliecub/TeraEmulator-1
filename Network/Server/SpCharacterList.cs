@@ -2,6 +2,7 @@
 using Data.Structures.Account;
 using Data.Structures.Player;
 using System.IO;
+using Utils;
 
 namespace Network.Server
 {
@@ -26,6 +27,9 @@ namespace Network.Server
             for (int i = 0; i < Account.Players.Count; i++)
             {
                 Player player = Account.Players[i];
+                while ((player.Level + 1) != Data.Data.PlayerExperience.Count - 1
+                && player.Exp >= Data.Data.PlayerExperience[player.Level])
+                    player.Level++;
 
                 short check1 = (short) writer.BaseStream.Position;
                 WriteH(writer, check1); //Check1
