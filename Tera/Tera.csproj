@@ -11,21 +11,6 @@
     <AssemblyName>Tera</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -73,6 +58,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>GamePlay.Designer.cs</LastGenOutput>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionEngine\DuelAction.cs" />
@@ -81,25 +67,20 @@
     <Compile Include="ActionEngine\PartyAction.cs" />
     <Compile Include="ActionEngine\RequestAction.cs" />
     <Compile Include="ActionEngine\TradeAction.cs" />
-    <Compile Include="AdminEngine\AdminCommands\AddGold.cs" />
     <Compile Include="AdminEngine\AdminCommands\AddItem.cs" />
     <Compile Include="AdminEngine\AdminCommands\AddSkill.cs" />
     <Compile Include="AdminEngine\AdminCommands\CampfireInfo.cs" />
     <Compile Include="AdminEngine\AdminCommands\CheckGeo.cs" />
     <Compile Include="AdminEngine\AdminCommands\Craft.cs" />
     <Compile Include="AdminEngine\AdminCommands\GoTo.cs" />
-    <Compile Include="AdminEngine\AdminCommands\JumpTo.cs" />
     <Compile Include="AdminEngine\AdminCommands\Mount.cs" />
-    <Compile Include="AdminEngine\AdminCommands\Notice.cs" />
     <Compile Include="AdminEngine\AdminCommands\NpcCommand.cs" />
     <Compile Include="AdminEngine\AdminCommands\Quest.cs" />
     <Compile Include="AdminEngine\AdminCommands\Reload.cs" />
     <Compile Include="AdminEngine\AdminCommands\Script.cs" />
     <Compile Include="AdminEngine\AdminCommands\SetLevel.cs" />
-    <Compile Include="AdminEngine\AdminCommands\SetMode.cs" />
     <Compile Include="AdminEngine\AdminCommands\Spawn.cs" />
     <Compile Include="AdminEngine\AdminCommands\Speed.cs" />
-    <Compile Include="AdminEngine\AdminCommands\SystemNote.cs" />
     <Compile Include="AdminEngine\AdminCommands\Test.cs" />
     <Compile Include="AdminEngine\AdminCommands\Unstuck.cs" />
     <Compile Include="AdminEngine\AdminCommands\ViewMember.cs" />
@@ -171,6 +152,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>GamePlay.settings</DependentUpon>
     </Compile>
+    <Compile Include="Services\WebService\TeraWebService.cs" />
+    <Compile Include="Services\WebService\IWebService.cs" />
+    <Compile Include="Services\WebService\ServiceManager.cs" />
     <Compile Include="SkillEngine\AbnormalityProcessor.cs" />
     <Compile Include="SkillEngine\EffectsProvider.cs" />
     <Compile Include="SkillEngine\Effects\EfAttackSpeedInc.cs" />
@@ -192,6 +176,7 @@
       <HintPath>..\Libs\Scs.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Communication\Communication.csproj">
@@ -218,23 +203,7 @@
   <ItemGroup>
     <Content Include="PerfCenterCpl.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

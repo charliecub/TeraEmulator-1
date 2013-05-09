@@ -198,14 +198,13 @@ namespace Tera.Services
         {
             if (party == null)
                 return;
-            /*
-            lock (party.MemberLock)
-                foreach (Player partyMember in party.PartyMembers)
-                    if (Communication.Global.PlayerService.IsPlayerOnline(partyMember))
-                        foreach (Player member in party.PartyMembers)
-                            if (Communication.Global.PlayerService.IsPlayerOnline(member))
-                                new SpPartyAbnormals(member).Send(partyMember);
-             */
+
+            //lock (party.MemberLock)
+            //    foreach (Player partyMember in party.PartyMembers)
+            //        if (Communication.Global.PlayerService.IsPlayerOnline(partyMember))
+            //            foreach (Player member in party.PartyMembers)
+            //                if (Communication.Global.PlayerService.IsPlayerOnline(member))
+            //                    new SpPartyAbnormals(member).Send(partyMember);
         }
 
         public void SendMemberPositionToPartyMembers(Player player)

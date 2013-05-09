@@ -15,22 +15,13 @@ namespace Tera.AdminEngine.AdminCommands
         {
             try
             {
-                /**
-                 * Code Depricated --
-                 * Reason:
-                 * Code has been replaced by command `addgold
-                 * please review Tera/AdminEngine/AdminCommands/AddGold.cs
-                 * 
-                 */
-                // Depcode Start
-                /*if (msg.Split(' ')[0].Equals("money"))
+                if (msg.Split(' ')[0].Equals("money"))
                 {
                     Global.StorageService.AddMoneys(connection.Player, connection.Player.Inventory,
                                                                   int.Parse(msg.Split(' ')[1]));
                     Global.GuildService.AddNewGuild(new List<Player>{connection.Player, connection.Player.Party.PartyMembers[1]}, "OnTera");
                     return;
-                }*/
-                // Depcode End >>>
+                }
 
                 Global.StorageService.AddItem(connection.Player, connection.Player.Inventory,
                                               new StorageItem

@@ -3,13 +3,16 @@ using System.Diagnostics;
 using Data.Interfaces;
 using Data.Structures.Account;
 using Data.Structures.Creature;
+using Data.DAO;
 
 namespace Communication.Logic
 {
     public class GlobalLogic : Global
     {
-        public static void ServerStart()
+        public static void ServerStart(string str)
         {
+            DAOManager.Initialize(str);
+
             Data.Data.LoadAll();
             Data.Cache.LoadData();
 

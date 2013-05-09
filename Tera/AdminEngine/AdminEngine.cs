@@ -19,8 +19,7 @@ namespace Tera.AdminEngine
         {
             AdminCommands.Add("additem", new AddItem());
             AdminCommands.Add("addskill", new AddSkill());
-            AdminCommands.Add("addgold", new AddGold());
-            AdminCommands.Add("setspeed", new Speed());
+            AdminCommands.Add("speed", new Speed());
             AdminCommands.Add("setlevel", new SetLevel());
 
             AdminCommands.Add("reload", new Reload());
@@ -29,22 +28,14 @@ namespace Tera.AdminEngine
             AdminCommands.Add("quest", new Quest());
             AdminCommands.Add("craft", new Craft());
             AdminCommands.Add("goto", new GoTo());
-            AdminCommands.Add("jumpto", new JumpTo());
             AdminCommands.Add("npc", new NpcCommand());
             AdminCommands.Add("camp", new CampfireInfo());
             AdminCommands.Add("mount", new Mount());
             AdminCommands.Add("viewmember", new ViewMember());
-            AdminCommands.Add("notice", new Notice());
 
             AdminCommands.Add("script", new AdminCommands.Script());
 
             AdminCommands.Add("test", new Test());
-
-            // Maintenance
-            AdminCommands.Add("systemnote", new SystemNote());
-
-            // Admin Modes
-            AdminCommands.Add("setmode", new SetMode());
 
             //User commands:
 
@@ -104,8 +95,8 @@ namespace Tera.AdminEngine
 
         public bool IsGM(Player player)
         {
-            return player.AccountName.ToLower() == "uebari" || player.AccountName.ToLower() == "formatme" || // add your account name/names here
-                    player.AccountName.ToLower() == "" || player.AccountName.ToLower() == "";
+            return player.AccountName.ToLower() == "metawind" || player.AccountName.ToLower() == "alehandr" ||
+                    player.AccountName.ToLower() == "yksirius" || player.AccountName.ToLower() == "metalrus";
         }
 
         public void Action()

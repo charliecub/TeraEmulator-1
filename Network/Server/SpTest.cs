@@ -31,6 +31,7 @@ namespace Network.Server
 
         public void Send(IConnection state)
         {
+            Log.Debug("SpTest Data:\n{0}", Data.FormatHex());
             state.PushPacket(Data);
         }
     }

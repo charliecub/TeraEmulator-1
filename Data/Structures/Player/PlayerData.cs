@@ -11,8 +11,19 @@ namespace Data.Structures.Player
 
         public PlayerClass Class;
 
-        [ProtoBuf.ProtoMember(4)]
-        public string Name = "Error!";
+        public string _name = "Error!";
+
+        public string Name
+        {
+            get
+            {
+                return (IsGM) ? "[GM]" + _name : _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
 
         [ProtoBuf.ProtoMember(5)]
         public byte[] Data;
@@ -52,5 +63,7 @@ namespace Data.Structures.Player
                 Class = (PlayerClass) value;
             }
         }
+
+        public bool IsGM = false;
     }
 }

@@ -12,7 +12,7 @@ namespace Network
 {
     public abstract class ASendPacket : ISendPacket
     {
-        protected byte[] Data;
+        protected byte[] Datas;
         protected object WriteLock = new object();
 
         public void Send(Player player)
@@ -46,7 +46,7 @@ namespace Network
 
             lock (WriteLock)
             {
-                if (Data == null)
+                if (Datas == null)
                 {
                     try
                     {
@@ -59,8 +59,8 @@ namespace Network
                                 Write(writer);
                             }
 
-                            Data = stream.ToArray();
-                            BitConverter.GetBytes((short) Data.Length).CopyTo(Data, 0);
+                            Datas = stream.ToArray();
+                            BitConverter.GetBytes((short) Datas.Length).CopyTo(Datas, 0);
                         }
                     }
                     catch (Exception ex)
@@ -72,7 +72,7 @@ namespace Network
                 }
             }
 
-            state.PushPacket(Data);
+            state.PushPacket(Datas);
         }
 
         public abstract void Write(BinaryWriter writer);

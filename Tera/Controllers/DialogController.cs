@@ -195,7 +195,7 @@ namespace Tera.Controllers
 
             SendDialog();
 
-            new SpNpcTalk(npc, "@npc:" + npc.NpcTemplate).Send(player.Connection);//safe?
+            //new SpNpcTalk(npc, "@npc:" + npc.NpcTemplate).Send(player.Connection);
         }
 
         public void Progress(int selectedIndex, int dialogUid)
@@ -283,7 +283,15 @@ namespace Tera.Controllers
                         case NpcTitle.ArmorsmithingDesigns:
                         case NpcTitle.LeatherworkingPatterns:
                             if (Data.Data.Tradelists.ContainsKey(Npc.NpcTemplate.FullId))
-								Global.ControllerService.SetController(Player,new TradeController(Player,Data.Data.Tradelists[Npc.NpcTemplate.FullId])); //clean
+                                Global.ControllerService.SetController(Player,
+                                                                       new TradeController(Player,
+                                                                                           Data.Data.
+                                                                                               Tradelists
+                                                                                               [
+                                                                                                   Npc.
+                                                                                                       NpcTemplate
+                                                                                                       .FullId
+                                                                                               ]));
                             break;
 
 

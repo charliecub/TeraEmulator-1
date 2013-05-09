@@ -13,7 +13,7 @@ namespace Data.Structures.Player
 
         [ProtoBuf.ProtoMember(2)] public long Money = 100;
 
-        [ProtoBuf.ProtoMember(3)] public short Size = 80;
+        [ProtoBuf.ProtoMember(3)] public short Size = 40;
 
         [ProtoBuf.ProtoMember(4)] public StorageType StorageType;
 

@@ -4,3 +4,9 @@ J:\_Tera\Tera\Utils\bin\Debug\NLog.dll
 J:\_Tera\Tera\Utils\bin\Debug\NLog.pdb
 J:\_Tera\Tera\Utils\obj\Debug\Utils.dll
 J:\_Tera\Tera\Utils\obj\Debug\Utils.pdb
+E:\tera\Github\TeraEmulator\TeraEmulator\Utils\bin\Debug\Utils.dll
+E:\tera\Github\TeraEmulator\TeraEmulator\Utils\bin\Debug\Utils.pdb
+E:\tera\Github\TeraEmulator\TeraEmulator\Utils\bin\Debug\NLog.dll
+E:\tera\Github\TeraEmulator\TeraEmulator\Utils\bin\Debug\NLog.pdb
+E:\tera\Github\TeraEmulator\TeraEmulator\Utils\obj\Debug\Utils.dll
+E:\tera\Github\TeraEmulator\TeraEmulator\Utils\obj\Debug\Utils.pdb

@@ -38,16 +38,24 @@
     <OutputPath>bin\x64\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.6.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="protobuf-net, Version=2.0.0.480, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cache.cs" />
+    <Compile Include="DAO\AccountDAO.cs" />
+    <Compile Include="DAO\BaseDAO.cs" />
+    <Compile Include="DAO\DAOManager.cs" />
+    <Compile Include="DAO\InventoryDAO.cs" />
+    <Compile Include="DAO\PlayerDAO.cs" />
+    <Compile Include="DAO\QuestDAO.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="Enums\AttackStatus.cs" />
     <Compile Include="Enums\AttackType.cs" />

@@ -10,6 +10,8 @@ using InformerLib;
 using Network;
 using Tera.Services;
 using Utils;
+using Tera.Services.WebService;
+using Data.DAO;
 
 namespace Tera
 {
@@ -18,6 +20,8 @@ namespace Tera
         public static TcpServer TcpServer;
 
         protected static IScsServiceApplication ServiceApplication;
+
+        
 
         public static void Main()
         {
@@ -29,7 +33,7 @@ namespace Tera
             }
             catch (Exception ex)
             {
-                Log.FatalException("Can't start server!!", ex);
+                Log.FatalException("Can't start server!", ex);
                 return;
             }
 
@@ -96,7 +100,7 @@ namespace Tera
 
             #endregion
 
-            GlobalLogic.ServerStart();
+            GlobalLogic.ServerStart(GamePlay.Default.DBConString);
 
             TcpServer.BeginListening();
 
@@ -106,6 +110,9 @@ namespace Tera
                 ServiceApplication.AddService<IInformerService, InformerService>((InformerService) InformerService);
                 ServiceApplication.Start();
                 Log.Info("InformerService started at *:23232.");
+
+                var webservices = new ServiceManager();
+                webservices.Run();
             }
             catch (Exception ex)
             {

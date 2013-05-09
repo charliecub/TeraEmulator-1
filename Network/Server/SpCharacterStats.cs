@@ -14,12 +14,11 @@ namespace Network.Server
 
         public override void Write(BinaryWriter writer)
         {
-          
-                WriteD(writer, Player.LifeStats.Hp); // current hp
-                WriteD(writer, Player.LifeStats.Mp); // current mp
-                WriteD(writer, 0); //unk
-                WriteD(writer, Player.MaxHp);
-                WriteD(writer, Player.MaxMp);
+            WriteD(writer, Player.LifeStats.Hp); // current hp
+            WriteD(writer, Player.LifeStats.Mp); // current mp
+            WriteD(writer, 0); //unk
+            WriteD(writer, Player.MaxHp);
+            WriteD(writer, Player.MaxMp);
 
             WriteStats(writer, Player);
 

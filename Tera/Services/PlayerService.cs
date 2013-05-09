@@ -21,6 +21,7 @@ using Tera.Controllers;
 using Tera.Extensions;
 using Tera.Structures;
 using Utils;
+using Data.DAO;
 
 namespace Tera.Services
 {
@@ -73,6 +74,13 @@ namespace Tera.Services
             }
 
             PlayersOnline.Remove(player);
+
+            DAOManager.invenDAO.SaveStorage(player, player.Inventory);
+            DAOManager.playerDAO.UpdatePlayer(player);
+            foreach (var quest in player.Quests.ToList())
+            {
+                DAOManager.questDAO.AddQuest(player, quest.Value);
+            }
         }
 
         public CheckNameResult CheckName(string name, short type)
@@ -119,7 +127,9 @@ namespace Tera.Services
                                                    },
                                 };
 
+            DAOManager.playerDAO.SaveNewPlayer(player);
             connection.Account.Players.Add(player);
+
             return player;
         }
 
