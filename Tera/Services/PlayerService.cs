@@ -127,7 +127,7 @@ namespace Tera.Services
                                                    },
                                 };
 
-            DAOManager.playerDAO.SaveNewPlayer(player);
+            player.Id = DAOManager.playerDAO.SaveNewPlayer(player);
             connection.Account.Players.Add(player);
 
             return player;
