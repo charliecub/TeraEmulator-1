@@ -86,13 +86,14 @@ namespace Data.DAO
                         };
                     }
                 }
+                reader.Close();
             }
-            reader.Close();
+            
 
             return players;
         }
 
-        public void SaveNewPlayer(Player player)
+        public int SaveNewPlayer(Player player)
         {
             string cmdString = "INSERT INTO players "
             + "(`AccountName`,`Level`,`Exp`,`ExpRecoverable`,`Mount`,`UiSettings`,`GuildAccepted`,`PraiseGiven`,`LastPraise`,`CurrentBankSection`,`CreationDate`) "
@@ -118,7 +119,7 @@ namespace Data.DAO
             catch (MySqlException ex)
             {
                 Log.ErrorException("Save players Error", ex);
-                return;
+                return 0;
             }
 
             cmdString = "INSERT INTO player_datas "
@@ -145,8 +146,10 @@ namespace Data.DAO
             catch (MySqlException ex)
             {
                 Log.ErrorException("Save player_datas Error", ex);
-                return;
+                return 0;
             }
+
+            return id;
         }
 
         public void UpdatePlayer(Player player)
