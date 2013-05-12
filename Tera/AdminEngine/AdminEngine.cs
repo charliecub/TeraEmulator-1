@@ -19,8 +19,12 @@ namespace Tera.AdminEngine
         {
             AdminCommands.Add("additem", new AddItem());
             AdminCommands.Add("addskill", new AddSkill());
+            AdminCommands.Add("addgold", new AddGold());
             AdminCommands.Add("speed", new Speed());
             AdminCommands.Add("setlevel", new SetLevel());
+            AdminCommands.Add("jumpto", new JumpTo());
+            AdminCommands.Add("notice", new Notice());
+            AdminCommands.Add("systemnote", new SystemNote());
 
             AdminCommands.Add("reload", new Reload());
             AdminCommands.Add("spawn", new Spawn());

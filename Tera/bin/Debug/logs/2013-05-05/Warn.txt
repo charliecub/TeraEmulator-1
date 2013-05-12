@@ -1,6 +1,0 @@
-00:28:48.6347 | Data: Cache file not found!
-00:28:48.6407 | Data: guilds_cache file not found!
-00:38:32.4351 | Data: Cache file not found!
-00:38:32.4421 | Data: guilds_cache file not found!
-01:04:04.4337 | Data: Cache file not found!
-01:04:04.4337 | Data: guilds_cache file not found!
