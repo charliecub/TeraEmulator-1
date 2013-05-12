@@ -26,22 +26,22 @@ namespace Data.DAO
             string cmdString = "SELECT * FROM accounts WHERE Name=?username";
             MySqlCommand command = new MySqlCommand(cmdString, AccountDAOConnection);
             command.Parameters.AddWithValue("?username", username);
-            MySqlDataReader reader = command.ExecuteReader();
+            MySqlDataReader readerAcct = command.ExecuteReader();
 
             Account acc = new Account();
-            if (reader.HasRows)
+            if (readerAcct.HasRows)
             {
-                while (reader.Read())
+                while (readerAcct.Read())
                 {
-                    acc.AccountId = reader.GetInt32(0);
-                    acc.Name = reader.GetString(1);
-                    acc.AccessLevel = (byte)reader.GetInt32(3);
-                    acc.Membership = (byte)reader.GetInt32(4);
-                    acc.LastOnlineUtc = reader.GetInt64(5);
+                    acc.AccountId = readerAcct.GetInt32(0);
+                    acc.Name = readerAcct.GetString(1);
+                    acc.AccessLevel = (byte)readerAcct.GetInt32(3);
+                    acc.Membership = (byte)readerAcct.GetInt32(4);
+                    acc.LastOnlineUtc = readerAcct.GetInt64(5);
                 }
             }
 
-            reader.Close();
+            readerAcct.Close();
 
             return (acc.Name == "") ? null : acc;
         }

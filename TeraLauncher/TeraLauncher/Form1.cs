@@ -147,9 +147,9 @@ namespace TeraLauncher
                 lblWelcomeText.Text = lblWelcomeText.Text + " " + webApi.user.username;
                 lblLoggedAs.Text = lblLoggedAs.Text + " " + webApi.user.username;
                 lblCoins.Text = lblCoins.Text + " : " + webApi.user.coins + " Coins";
-                lblRegisterDate.Text = lblRegisterDate.Text + " : " + webApi.user.regdate;
-                lblLastLogin.Text = lblLastLogin.Text + " : " + webApi.user.lastdate;
-                lblLastIP.Text = lblLastIP.Text + " : " + webApi.user.lastip;
+                //lblRegisterDate.Text = lblRegisterDate.Text + " : " + webApi.user.regdate;
+                //lblLastLogin.Text = lblLastLogin.Text + " : " + webApi.user.lastdate;
+                //lblLastIP.Text = lblLastIP.Text + " : " + webApi.user.lastip;
             }
         }
 

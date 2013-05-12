@@ -7,16 +7,16 @@
 	}
 	
 	// Server List File
-	$serfile = '../launcher/servers/serlistenglis.en';
+	$serfile = 'launcher/servers/serlist.en';
 	
 	// Verification
 	$authorized = array( '127.0.0.1', '10.0.0.4', '25.149.74.211', '::1' );
 	if( !in_array( $_SERVER['REMOTE_ADDR'], $authorized ) ){ return false; }
 	
-	include_once("bd.php");
+	include_once("db.php");
 	
 	// XML Layout
-	$xml .= <<<EOF
+	$xml = <<<EOF
 <?xml version="1.0" encoding="utf-8"?>
 \n
 EOF;
@@ -29,14 +29,21 @@ EOF;
 	switch( $_GET['status'] )
 	{
 		case "0":
-		$sql = "SELECT * FROM servers WHERE name = '".$_GET['server']."'";
-		$q = mysql_query( $sql );
-		$result = mysql_fetch_array( $q );
+		$sth = $dbh->prepare("SELECT * 
+		FROM `servers` 
+		WHERE name = ?");
+		$sth->bindValue(1, $_GET['server']);
+		$sth->execute();
+		
+		$result = $sth->fetch();
 		$result[9] = ( ( $result[9] == 1 ) ? 'Open' : 'Closed' );
 		
-		$sql = "UPDATE servers SET l_visible = 1 WHERE name = '".$_GET['server']."'";
-		$q = mysql_query( $sql );
-		//print_r( $result );
+		$sth = $dbh->prepare("UPDATE `servers` 
+		SET l_visible = 1 
+		WHERE name = ?");
+		$sth->bindValue(1, $_GET['server']);
+		$sth->execute();
+		
 		$xml .=<<<EOF
   <server>
     <id>$result[0]</id>
@@ -68,8 +75,13 @@ EOF;
 		
 			break;
 		case "offline":
-		$sql = "UPDATE servers SET l_visible = 0 WHERE name = '".$_GET['server']."'";
-		$q = mysql_query( $sql );
+		
+		$sth = $dbh->prepare("UPDATE `servers` 
+		SET l_visible = 0 
+		WHERE name = ?");
+		$sth->bindValue(1, $_GET['server']);
+		$sth->execute();
+		
 		unlink($serfile);
 			break;
 	}
